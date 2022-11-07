@@ -9,29 +9,23 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: MM
-email:
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
+title: Rasmus Säfvenberg's page
+email: rasmus.safvenberg@gmail.com
+description: Personal website of Rasmus Säfvenberg where I will post projects I have worked on, alongside things that interest and fasciante me.
+github_username: Safvenberger
 minimal_mistakes_skin: default
 search: true
 
 # Build settings
 markdown: kramdown
+kramdown:
+  math_engine: nil
 remote_theme: mmistakes/minimal-mistakes
+github: [metadata]
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
   - _pages
@@ -58,34 +52,31 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  name   : "Rasmus Säfvenberg"
+  avatar : "https://media-exp1.licdn.com/dms/image/C5603AQGCms3ksjYHTw/profile-displayphoto-shrink_800_800/0/1585826076200?e=1673481600&v=beta&t=2K5cBUcYIB62SVVDAHgdBqBk875wo-syDdbH4evTgt0"
+  bio    : "Data scientist with a master in Statistics and Machine Learning. Currently working as a research assistant in hockey analytics at Linköping university."
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
+    - label: "E-mail"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:rasmus.safvenberg@gmail.com"
+    - label: "LinkedIn"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://www.linkedin.com/in/rasmus-safvenberg/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/Safvenberger"
 
 footer:
   links:
-    - label: "Twitter"
+    - label: "E-mail"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:rasmus.safvenberg@gmail.com"
+    - label: "LinkedIn"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://www.linkedin.com/in/rasmus-safvenberg/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/Safvenberger"
 
 defaults:
   # _posts
