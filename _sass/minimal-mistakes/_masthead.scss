@@ -91,3 +91,12 @@
     font-weight: 700;
   }
 }
+
+.theme__toggle {
+    height: unset;
+    margin-right: unset;
+    color: $primary-color;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+  }

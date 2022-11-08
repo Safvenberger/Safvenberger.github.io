@@ -14,6 +14,7 @@ email: rasmus.safvenberg@gmail.com
 description: Personal website of Rasmus Säfvenberg where I will post projects I have worked on, alongside things that interest and fasciante me.
 github_username: Safvenberger
 minimal_mistakes_skin: default
+minimal_mistakes_skin2: "dark"
 search: true
 
 # Build settings
@@ -49,7 +50,8 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
-
+  - jekyll-seo-tag
+  - jekyll-polyglot
 author:
   name   : "Rasmus Säfvenberg"
   avatar : "https://media-exp1.licdn.com/dms/image/C5603AQGCms3ksjYHTw/profile-displayphoto-shrink_800_800/0/1585826076200?e=1673481600&v=beta&t=2K5cBUcYIB62SVVDAHgdBqBk875wo-syDdbH4evTgt0"
@@ -59,7 +61,7 @@ author:
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:rasmus.safvenberg@gmail.com"
     - label: "LinkedIn"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/rasmus-safvenberg/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -71,7 +73,7 @@ footer:
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:rasmus.safvenberg@gmail.com"
     - label: "LinkedIn"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/rasmus-safvenberg/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -85,6 +87,8 @@ defaults:
     values:
       layout: single
       author_profile: true
+      show_date: true
+      date_format: "%Y-%m-%d"
       read_time: true
       comments: true
       share: true
@@ -103,3 +107,36 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+  
+# Reading Files
+include:
+  - .htaccess
+  - _pages
+exclude:
+  - vendor
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - Rakefile
+  - README
+  - tmp
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
