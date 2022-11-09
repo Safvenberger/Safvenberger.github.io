@@ -9,13 +9,14 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Rasmus Säfvenberg's page
+title: Analytics by Rasmus Säfvenberg
 email: rasmus.safvenberg@gmail.com
 description: Personal website of Rasmus Säfvenberg where I will post projects I have worked on, alongside things that interest and fasciante me.
 github_username: Safvenberger
 minimal_mistakes_skin: default
 minimal_mistakes_skin2: "dark"
 search: true
+logo: "/assets/images/analytics.png"
 
 # Build settings
 markdown: kramdown
@@ -25,7 +26,7 @@ remote_theme: mmistakes/minimal-mistakes
 github: [metadata]
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 12 # amount of posts to show
 paginate_path: /page:num/
 
 include:
@@ -55,7 +56,7 @@ plugins:
 author:
   name   : "Rasmus Säfvenberg"
   avatar : "https://media-exp1.licdn.com/dms/image/C5603AQGCms3ksjYHTw/profile-displayphoto-shrink_800_800/0/1585826076200?e=1673481600&v=beta&t=2K5cBUcYIB62SVVDAHgdBqBk875wo-syDdbH4evTgt0"
-  bio    : "Data scientist with a master in Statistics and Machine Learning. Currently working as a research assistant in hockey analytics at Linköping university."
+  bio    : "Data scientist with an MSc in Statistics and Machine Learning. Currently working as a Research Assistant in Hockey Analytics at Linköping University."
   links:
     - label: "E-mail"
       icon: "fas fa-fw fa-envelope-square"
@@ -91,7 +92,7 @@ defaults:
       date_format: "%Y-%m-%d"
       read_time: true
       comments: true
-      share: true
+      share: false
       related: true
   # _pages
   - scope:
