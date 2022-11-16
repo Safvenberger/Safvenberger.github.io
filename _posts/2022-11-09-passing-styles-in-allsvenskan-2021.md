@@ -98,9 +98,11 @@ Further preprocessing steps include:
   </li>
   <li>Computing the number of passes per result and pass length for each player in each game.
     <ol>
+      <li>Note that goal kicks and goalkeeper throws are excluded in this step.</li>
       <li>The player's value is then divided by the minutes played in the game.</li>
       <li>And in turn, the value is then also divided by the possession his team had in the game.</li>
-      <li>Finally, the value is multiplied by 90 to represent the count per 90 minutes.</li>
+      <li>Next, the value is multiplied by 90 to represent the count per 90 minutes.</li>
+      <li>In this step we also filter out players who played less than 300 minutes during the season.</li>
     </ol>
   </li>
   <li>After computing these standardized statistics, the next step is sum the to be for the entire season.</li>
@@ -108,7 +110,7 @@ Further preprocessing steps include:
 </ol>
 
   
-*Whew!* That was a "short"" summary of the preprocessing! If you would like to check 
+*Whew!* That was a "short" summary of the preprocessing! If you would like to check 
 the preprocessing in detail, check out the scripts in the [Github repo](https://github.com/Safvenberger/Passing-Styles-in-Allsvenskan/Scripts).
 
 ## Method
