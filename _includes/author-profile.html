@@ -16,9 +16,11 @@
       <a class="u-url" rel="me" href="{{ author.home | default: '/' | absolute_url }}" itemprop="url">{{ author.name }}</a>
     </h3>
     {% if author.bio %}
-      <div class="author__bio p-note" itemprop="description">
-        {{ author.bio | markdownify }}
-      </div>
+      {% unless page.toc_left %}
+        <div class="author__bio p-note" itemprop="description">
+          {{ author.bio | markdownify }}
+        </div>
+      {% endunless %}
     {% endif %}
   </div>
 

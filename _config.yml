@@ -57,6 +57,7 @@ author:
   name   : "Rasmus Säfvenberg"
   avatar : "https://media-exp1.licdn.com/dms/image/C5603AQGCms3ksjYHTw/profile-displayphoto-shrink_800_800/0/1585826076200?e=1673481600&v=beta&t=2K5cBUcYIB62SVVDAHgdBqBk875wo-syDdbH4evTgt0"
   bio    : "Data scientist with an MSc in Statistics and Machine Learning. Currently working as a Research Assistant in Hockey Analytics at Linköping University."
+  location: "Stockholm, Sweden"
   links:
     - label: "E-mail"
       icon: "fas fa-fw fa-envelope-square"
@@ -87,7 +88,6 @@ defaults:
       type: posts
     values:
       layout: single
-      classes: wide
       author_profile: true
       show_date: true
       date_format: "%Y-%m-%d"
