@@ -3,6 +3,7 @@ title: "Passing styles in Allsvenskan 2021"
 date: 2022-11-09
 classes: wide
 layout: single
+toc_left: true
 tags: 
   - data analysis 
   - dimensionality reduction
@@ -25,8 +26,6 @@ represent a crucial component of a player's playing style. Consequently, it is l
 that not all players share the same passing style, but *which* passing styles and 
 *how many* styles are there actually? Continue reading to find out!
 
-([**SHORTCUT**](#results) to results if the method does not interest you.)
-
 For the code of this analysis, refer to this [Github repo](https://github.com/Safvenberger/Passing-Styles-in-Allsvenskan).
 
 ## Data
@@ -34,7 +33,7 @@ For the code of this analysis, refer to this [Github repo](https://github.com/Sa
 The data originates from the open data repository of [PlaymakerAI](https://twitter.com/playmakerai)
 and without it, the rest of this work would not be possible.
 
-<img src="https://drive.google.com/uc?id=132cTHOhFloLxc3-2B-qmgQlxGsWN0KS7" width="200" height="200" />
+<img src="https://drive.google.com/uc?id=132cTHOhFloLxc3-2B-qmgQlxGsWN0KS7" width="200" height="200" />{: .align-center}
 
 As for the data used for the analysis, it contains all games in Allsvenskan during
 the 2021 season. Each game consists of approximately 1200-1500 actions that describe
@@ -45,7 +44,7 @@ and when (start and end time).
 
 ### Pitch plot
 To give a feeling of where the actions take place, refer to the following figure:
-![pitch](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/pitch.png)
+![pitch](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/pitch.png){: .align-center}
 
 where each team always attacks left to right.
 
@@ -53,19 +52,19 @@ where each team always attacks left to right.
 From the data, the first step was to determine which passing variables could be 
 derived and analyzed. The following variables were included:
 
-| Variable          | Description                       
-| :---              | :---                       
-| Assist            | Pass leading to goal.
-| Cross             | Pass from the wing to the central attacking third.
-| Final third entry | Pass from outside that enters the final third.
-| Key pass          | Pass leading to a shot or goal scoring opportunity. 
-| Pass into the box | A pass that ends inside the penalty box.
-| Pass              | All passes, with the exception of goal kicks.
-| Progressive pass  | According to the [Wyscout definition](https://dataglossary.wyscout.com/progressive_pass/).
-| Wing switch       | A pass going from wing to wing, at least half the pitch width.
+| Variable          | Description   | Length | Outcome |                 
+| :---              | :---          | :---   | :---    |      
+| Assist            | Pass leading to goal. | Long/Medium/Short | Success |
+| Cross             | Pass from the wing to the central attacking third. | Long/Medium/Short | Success/Fail |
+| Final third entry | Pass from outside that enters the final third. | Long/Medium/Short | Success/Fail |
+| Key pass          | Pass leading to a shot or goal scoring opportunity. | Long/Medium/Short | Success | 
+| Pass into the box | A pass that ends inside the penalty box. | Long/Medium/Short | Success/Fail |
+| Pass              | All passes, with the exception of goal kicks. | Long/Medium/Short | Success/Fail |
+| Progressive pass  | According to the [Wyscout definition](https://dataglossary.wyscout.com/progressive_pass/). | Long/Medium/Short | Success/Fail |
+| Wing switch       | A pass going from wing to wing, at least half the pitch width. | Long/Medium | Success/Fail |
 
 Variables regarding corners and clearances were excluded due to the corners not 
-being in open play and clearances not always being a pass.
+being in open play and clearances not always being a pass, as well as lacking end coordinates.
 
 ### Preprocessing
 After retrieving the data the next step is to process it such that an analysis 
@@ -90,20 +89,20 @@ Further preprocessing steps include:
   <li>Computing the distance of passes.</li>
   <li>Determining if a pass was a progressive pass or not.</li>
   <li>Adding a column for the passing length, which is defined as:
-    <ol>
+    <ul>
       <li>short, if the pass distance is less than 15 meters, or</li>
       <li>medium, if the pass distance is between 15 and 40 meters, or</li>
       <li>long, if the pass distance exceeds 40 meters.</li>
-    </ol>
+    </ul>
   </li>
   <li>Computing the number of passes per result and pass length for each player in each game.
-    <ol>
+    <ul>
       <li>Note that goal kicks and goalkeeper throws are excluded in this step.</li>
       <li>The player's value is then divided by the minutes played in the game.</li>
       <li>And in turn, the value is then also divided by the possession his team had in the game.</li>
       <li>Next, the value is multiplied by 90 to represent the count per 90 minutes.</li>
       <li>In this step we also filter out players who played less than 300 minutes during the season.</li>
-    </ol>
+    </ul>
   </li>
   <li>After computing these standardized statistics, the next step is sum the to be for the entire season.</li>
   <li>Finally, before feeding the data to the next step, we normalize the data by subtracting the mean and scale to unit variance. This ensures the variables are all on the same scale.</li>
@@ -186,6 +185,7 @@ practice as the data may have sources of variation that are difficult to compres
 Next, we can examine the PCA loadings. That is, how much each variable contributes
 to each principal component. The loading ranges from -1 to 1, where a larger
 absolute value describe that a variable has stronger influence on the component.
+
 ![pca-loadings](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/pca_loadings.png)
 
 As the figure shows, nearly all of the variables have a positive influence on the 
@@ -201,6 +201,7 @@ not heavily influenced by many variables and tend to be close to zero.
 After the dimensionality reduction, we proceed to clustering. But first, a decision
 has to be made on how many clusters to use. For this, we examine the silhouette score
 to measure the optimal number of clusters, with respect to distinct clusters.
+
 ![cluster-number](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/number_of_clusters.png)
 
 Based on this, the five choices that are deemed most distinct are 2, 5, 4, 6, 8. However,
@@ -214,6 +215,7 @@ that disagreed more with intuition than 8 clusters. Thus, 8 clusters were chosen
 Once the number of clusters had been determined, a thorough evaluation of the clusters
 could be performed. For a fast overview, let us examine the means and rankings of 
 each cluster among the variables.
+
 ![cluster-means](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/heatmap_cluster_means.png)
 ![cluster-ranks](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/heatmap_cluster_ranks.png)
 
@@ -229,6 +231,7 @@ ranks near average across all categories.
 
 It is also worth exploring how the (primary) playing position, according to TransferMarkt[^1],
 varies between cluster.
+
 ![cluster-position](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/barplot_cluster_prop.png)
 
 As the figure entails, cluster 1 and 5 have a rather varied set of players from 
@@ -285,6 +288,7 @@ in the team's attack, with by far the most passes made across a majority of cate
 Another benefit of the dimensionality reduction performed by PCA is that we can
 also visualize the data in a lower dimensional space, e.g., two dimensions. Let's 
 do that!
+
 ![cluster-names](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/cluster_names_repel.png)
 
 As we can see, the goalkeepers can be found in the top left corner, the best playmakers
