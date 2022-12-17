@@ -66,19 +66,26 @@ derived and analyzed. The following variables were included:
 Variables regarding corners and clearances were excluded due to the corners not 
 being in open play and clearances not always being a pass, as well as lacking end coordinates.
 
+### Exploring passing variables
+
+Prior to the analysis, we can as a first step investigate the number of passes per category as well as their rate of success. The counts given are total for all teams and games across the entire season. Also note the fact that they y-axes are different for each plot.
+
+![examination](https://raw.githubusercontent.com/Safvenberger/Passing-Styles-in-Allsvenskan/main/Figures/passing_overall.png)
+
 ### Preprocessing
 After retrieving the data the next step is to process it such that an analysis 
 can be performed. In particular, the data should be transformed from *long* to *wide*.
-Data in *long* format is characterized by multiple rows describing the same action, 
+
+Data in **long** format is characterized by multiple rows describing the same action, 
 e.g., a pass that is also a cross would therefore span two rows, one for the pass and
 another for the cross. However, for the analysis that will follow, the data should
-be in *wide* format, where each row describes a unique action. In the wide representation,
+be in **wide** format, where each row describes a unique action. In the wide representation,
 each action will therefore be represented by the most succinct action, where 
 in the previous example the pass would be be described as a cross 
-(as a cross is also a pass, but the opposite need not be true). Although, this is
-the general procedure, some actions are not kept in the same way. These actions are
-assists, key passes, and passes into the box. This is due tothe basis for the 
-analysis being founded on the SPADL definition from [[1]](#1).
+(as a cross is also a pass, but the opposite need not be true).
+{: .notice--info}
+
+Although, this is the general procedure, some actions are not kept in the same way. These actions are assists, key passes, and passes into the box. This is due tothe basis for the analysis being founded on the SPADL definition from [[1]](#1).
 
 Further preprocessing steps include:
 <ol>
@@ -130,14 +137,17 @@ two points in a high-dimensional space is typically not as well-behaved as one
 would like. As a result, the distance may contradict our intuition and what we 
 believe makes sense. One way to alleviate these possible issues is to reduce the
 dimensionality of the data. A popular method for this is principal component 
-analysis (PCA), where all the original variables undergo a transformation. More 
-specifically, a linear combination (called components) of the original variables is created such 
-that each variable contributes, positively or negatively, to some extent,
+analysis (PCA), where all the original variables undergo a transformation.
+
+More  specifically, in PCA, a linear combination (called components) of the original variables is created such that each variable contributes, positively or negatively, to some extent,
 some more than others. Each component is orthogonal to the previous and strives to 
 maximize the variance in the data, which means that the first component has the highest
 variance explained in the data, followed by the second component and so on. 
 The aim with this is to represent as much of the information
-as possible in a lower dimension. For instance, if the original variables are
+as possible in a lower dimension. 
+{: .notice--info}
+
+For instance, if the original variables are
 100 in total, with PCA this may be able expressed at a satisfactory level with only
 a few components, say 2-5. This can then improve the result of the clustering that follows 
 and can also allow visualizations in a lower dimensional space.
@@ -152,11 +162,11 @@ threshold of variance explained.
 
 ### Clustering
 In the next step, after performing PCA and obtaining a set amount of components,
-we can finally move on to the fun part, clustering! Many algorithms also exist for
-this purpose, and the choice here is that of partitioning around medoids (PAM) [[3]](#3).
-In short, PAM searches for $k$ objects (here, players) to represent the center of
-each cluster. Each object is assigned to the cluster to which the object is least
-dissimilar, and in general it is less sensitive to outliers than $k$-means.
+we can finally move on to the fun part, clustering! The method of clustering revolves around grouping objects into a set of groups, that are called clusters. Many algorithms also exist for
+this purpose, and the choice here is that of partitioning around medoids (PAM) [[3]](#3), which is a solution to the $k$-medoids problem.
+
+In short, PAM searches for $k$ objects (here, players) to represent the center of each cluster. Each cluster center is referred to as a *medoid*, which is a also represented by one of the objects, as opposed to $k$-means. Each object is assigned to the cluster to which the object is least dissimilar, and in general it is less sensitive to outliers than $k$-means.
+{: .notice--info}
 
 Similar to PCA, a choice also has to be made regarding the number of clusters. 
 To do this, we can compare e.g., the silhouette score, which describes how distinct
@@ -256,8 +266,8 @@ Based on the previous results, the following labels for each cluster can be sugg
 | 7            | The defensive passer         | Medium distance passing           | Crossing, key passes/assists  | Enoch Kofi Adu (Mjällby AIF) |
 | 8            | The advanced playmaker       | Everything                        | Nothing                       | Ísak Bergmann Jóhannesson (IFK Norrköping) |
 
-where *specialities* refer to types of passing the cluster performs more often 
-and *rarities* are passing types that are seldom performed.
+where **specialities** refer to types of passing the cluster performs more often 
+and **rarities** are passing types that are seldom performed.
 
 [^2]: Medoid is just a fancy way of saying cluster center.
 
@@ -265,23 +275,16 @@ and *rarities* are passing types that are seldom performed.
 
 1. **The final third creator**: The style with the most variety in positions shares the common
 trait of cherishing play in the final third, although the player's own passing entries into it are rare.
-2. **The goalkeeper**: Self-explanatory. This style consists solely of goalkeepers whose 
-specialities are long passing and typically rarely engage in the team's passing network.
-3. **The defensive outlet**: Here we will find mostly center-backs who excels in medium and
-long distance passing, while crossing is not their forte.
-4. **The target man**: The target man is here describing the team's primary penalty box presence,
-with a speciality for short key passes and assists (mostly within the penalty box). Their weakness is 
-long distance passing.
-5. **The unwilling passer**: The players who, during their time on the pitch, rarely attempt many passes
-and instead rely on other events to make their mark.
-6. **The winger**: A wizard on the wings, the winger delivers crossing and wide play at a high rate, 
-with many passes having a destination within the opposition's penalty box. However, long distance passing 
-is less common.
-7. **The defensive passer**: Among the defensive passers we can a mix of central players from the
-defense and midfield that commonly plays safer passing, with a higher success rate. Their offensive 
-contribution is rather limited though. 
-8. **The advanced playmaker**: The maestro that is essential in establishing and creation 
-in the team's attack, with by far the most passes made across a majority of categories.
+2. **The goalkeeper**: Self-explanatory. This style consists solely of goalkeepers whose  specialties are long passing and typically rarely engage in the team's passing network.
+3. **The defensive outlet**: Here we will find mostly center-backs who excels in medium and long distance passing, while crossing is not their forte.
+4. **The target man**: The target man is here describing the team's primary penalty box presence, with a specialty for short key passes and assists (mostly within the penalty box). Their weakness is long distance passing.
+5. **The unwilling passer**: The players who, during their time on the pitch, rarely attempt many passes and instead rely on other events to make their mark.
+6. **The winger**: A wizard on the wings, the winger delivers crossing and wide play at a high rate, with many passes having a destination within the opposition's penalty box. However, long distance passing is less common.
+7. **The defensive passer**: Among the defensive passers we can a mix of central players from the defense and midfield that commonly plays safer passing, with a higher success rate. Their offensive contribution is rather limited though. 
+8. **The advanced playmaker**: The maestro that is essential in establishing and creation in the team's attack, with by far the most passes made across a majority of categories.
+
+**Reminder:** All passing statistics are possession-adjusted. 
+{: .notice--info}
 
 ### Visualizing the clustering
 
@@ -298,6 +301,11 @@ below the goalkeepers.
 For a more detailed exploration, refer to the interactive version:
 
 {% include passing-style.html %}
+
+Overall, the clustering highlight a grouping that aligns with one's intuition. For instance, among the most prominent playmakers we find both Magnus Eriksson, who led the league in assists, and Johan Larsson, who was a prominent contributor for Elfsborg's attacking prowess. Similarly, we can also find wingers, such as Mohanad Jeahze, Jonathan Levi, and Jonathan Ring, who frequently created danger from their wide positions. It is also natural that there exists a cluster for goalkeepers, although two goalkeepers were in another cluster. 
+
+**Conclusion:** To conclude, I would like to add some closing remarks. Firstly, the data used for this analysis captures a lot of information regarding passing, but it does not capture *all* of it. For instance, consider the difference between a long pass from goalkeeper to central midfielder and a pass from a central midfielder over the defensive line. One of these is (typically) more dangerous than the other but that information is not captured, as we do not have access to where the other players are located. Information regarding pressure could also give additional nuances to the analysis, as it is reasonable to expect that some teams play more passes when pressured and the success rate also varies. In general, by combining this event data with tracking data, we could find even more insights, which will hopefully be possible in the future. However, I would argue, based on the available information, that the resulting clustering captures what one might expect in regards to passing styles.
+{: .notice--success}
 
 ## Acknowledgements
 I would again like to thank [PlaymakerAI](https://twitter.com/playmakerai) for making
