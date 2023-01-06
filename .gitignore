@@ -2,7 +2,10 @@ _site
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
-.Rproj.user
+.Rproj*
+*.Rproj
+_posts/*.pdf
 node_modules
 package-lock.json
 npm-debug.log*
+.Rproj.user
