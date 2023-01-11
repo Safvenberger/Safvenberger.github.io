@@ -224,7 +224,7 @@ Why should we consider the Goals-xG instead of just xG? Well, using the differen
 {: .notice--success}
 {: .text-justify}
 
-<iframe src="../assets/html/xGHockey.html" height="750px" width="100%" style="border:none"></iframe>
+<iframe src="../assets/html/xgHockey.html" height="750px" width="100%" style="border:none"></iframe>
 
 As the interactive table highlights, the players who were the best finishers were Auston Matthews (60 goals vs. 40.76 xG), Kirill Kaprizov (47 goals vs. 29.38 xG), and Chris Kreider (52 goals vs. 35.70 xG). These results make sense as Matthews was the league's leading goalscorer and won the Hart trophy (Most valuable player in the league), while Kaprizov set a new franchise record for most goals scored in a single season, and Kreider had a career year, goal-scoring wise, having nearly dubbled his previous season-high of 28 goals. Overall, the high ranking players all have one thing in common: they are good at scoring goals. Similarly, Kaprizov and Kreider both were both lethal during power play situations while Matthews did most of his scoring in even strength. 
 
