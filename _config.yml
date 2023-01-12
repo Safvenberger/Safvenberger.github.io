@@ -24,6 +24,7 @@ kramdown:
   math_engine: nil
 remote_theme: mmistakes/minimal-mistakes
 github: [metadata]
+
 # Outputting
 permalink: /:categories/:title/
 paginate: 12 # amount of posts to show
@@ -35,14 +36,15 @@ include:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .Rproj.user/*
 
 # Plugins (previously gems:)
 plugins:
@@ -55,7 +57,7 @@ plugins:
   - jekyll-polyglot
 author:
   name   : "Rasmus Säfvenberg"
-  avatar : "https://media-exp1.licdn.com/dms/image/C5603AQGCms3ksjYHTw/profile-displayphoto-shrink_800_800/0/1585826076200?e=1673481600&v=beta&t=2K5cBUcYIB62SVVDAHgdBqBk875wo-syDdbH4evTgt0"
+  avatar : "assets/images/profile.png"
   bio    : "Data scientist with an MSc in Statistics and Machine Learning. Currently working as a Research Assistant in Hockey Analytics at Linköping University."
   location: "Stockholm, Sweden"
   links:
@@ -136,6 +138,7 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - .Rproj.user/*
 keep_files:
   - .git
   - .svn
