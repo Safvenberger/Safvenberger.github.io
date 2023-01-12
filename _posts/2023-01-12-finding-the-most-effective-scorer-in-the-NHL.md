@@ -13,7 +13,7 @@ header:
   teaser: "/assets/images/hockey-jersey.jpg"
 ---
 
-As in many sports, the goal in ice hockey is to outscore your opponent. From your team's perspective it would (of course) be preferable to score many goals on as few shots attempts as possible. However, we know in practice this is not feasible, as scoring on each shot you take will not happen. That being said, is it possible to find players who are the most effective when it comes to scoring? 
+As in many sports, the goal in ice hockey is to outscore your opponent. From your team's perspective it would (of course) be preferable to score many goals on as few shots attempts as possible. However, we know in practice this is not feasible, as scoring on each shot you take will not happen. That being said, is it possible to find players who are the most effective when it comes to scoring? The code for this analysis can be found in this [repo](https://github.com/Safvenberger/The-most-effective-scorer-in-the-NHL).
 
 ## Shooting percentage
 
