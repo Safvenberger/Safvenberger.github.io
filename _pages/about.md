@@ -6,7 +6,7 @@ title: "About"
 Welcome! This blog/webpage was created with the intention to showcase projects
 and topics that interest me.  
 
-Who am I? I am a data scientist currently working as a Research Assistant in Hockey Analytics at Linköping University.
+Who am I? I am a data engineer currently working at Stadium-
 
 The topics most likely to appear on this page are those that interest me the most, 
 such as sports analytics (soccer/football and ice hockey), various concepts in 
