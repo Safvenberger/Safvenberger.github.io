@@ -9,9 +9,9 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Analytics by Rasmus Säfvenberg
+title: Data by Rasmus Säfvenberg
 email: rasmus.safvenberg@gmail.com
-description: Personal website of Rasmus Säfvenberg where I will post projects I have worked on, alongside things that interest and fasciante me.
+description: Personal website of Rasmus Säfvenberg where I will post projects I have worked on, alongside things that interest and fascinate me.
 github_username: Safvenberger
 minimal_mistakes_skin: default
 minimal_mistakes_skin2: "dark"
@@ -58,7 +58,7 @@ plugins:
 author:
   name   : "Rasmus Säfvenberg"
   avatar : "assets/images/profile.png"
-  bio    : "Data scientist with an MSc in Statistics and Machine Learning. Currently working as a Research Assistant in Hockey Analytics at Linköping University."
+  bio    : "Data Engineer @ Stadium with an MSc in Statistics and Machine Learning."
   location: "Stockholm, Sweden"
   links:
     - label: "E-mail"
